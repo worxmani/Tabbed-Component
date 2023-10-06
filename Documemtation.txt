@@ -1,0 +1,76 @@
+
+# ManishWorx Banking Site Documentation
+
+## Overview
+
+Welcome to the ManishWorx Banking Site documentation. This web application serves as a tabbed component, allowing users to explore three different banking operations: Instant Transfers, Instant Loans, and Instant Closing. Users can navigate between these operations using the tabbed interface.
+
+**Project Structure:**
+- `index.html`: The main HTML file containing the structure and content of the web page.
+- `style.css`: The CSS file that provides styling and layout for the web page.
+- `script.js`: The JavaScript file that handles the interactivity and functionality of the tabbed component.
+
+## JavaScript Functionality
+
+The JavaScript file, `script.js`, plays a crucial role in making this tabbed component interactive. Below, we'll explore the JavaScript code in detail:
+
+### 1. Selecting Elements
+
+```javascript
+const tabContainer = document.querySelector(".operations__tab-container");
+const tabs = document.querySelectorAll(".operations__tab");
+const tabsContent = document.querySelectorAll(".operations__content");
+```
+
+In this section, we select the necessary elements from the HTML document to interact with. These elements include the tab container, individual tabs, and the tab content sections.
+
+### 2. Event Listener for Tab Clicks
+
+```javascript
+tabContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".operations__tab");
+  if (!clicked) return;
+
+  // Remove the "operations__tab--active" class from all tabs
+  tabs.forEach((t) => t.classList.remove("operations__tab--active"));
+
+  // Add the "operations__tab--active" class to the clicked tab
+  clicked.classList.add("operations__tab--active");
+
+  // Hide all tab content sections
+  tabsContent.forEach((t) => t.classList.remove("operations__content--active"));
+
+  // Show the corresponding tab content section
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add("operations__content--active");
+});
+```
+
+This code snippet adds a click event listener to the tab container. When a tab is clicked, it performs the following actions:
+
+- Identifies the clicked tab.
+- Removes the "operations__tab--active" class from all tabs to deactivate them.
+- Adds the "operations__tab--active" class to the clicked tab to activate it.
+- Hides all tab content sections.
+- Shows the corresponding tab content section by using the `dataset.tab` attribute.
+
+### 3. Tab Content Display
+
+The tab content display is controlled by toggling the "operations__content--active" class. When a tab is clicked, the associated content becomes visible, while others remain hidden.
+
+## Source Code
+
+The source code for this project is available on my GitHub account. You can access it and explore the code for further customization or learning purposes. Feel free to visit the GitHub repository:
+
+[ManishWorx Banking Site GitHub Repository](https://github.com/worxmani)
+
+## Contact
+
+If you have any questions, feedback, or need assistance, please don't hesitate to contact me through my website:
+
+[ManishWorx Website](https://www.manishworx.com)
+
+---
+
+This documentation provides detailed insights into the JavaScript functionality of your ManishWorx Banking Site project, explaining how tab switching and content display are achieved through JavaScript. Users and developers can refer to this documentation for a deeper understanding of the project's interactivity.
